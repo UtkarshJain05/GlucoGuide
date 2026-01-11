@@ -1,4 +1,4 @@
-# GlucoGuide
+# 🩺GlucoGuide
 ## 🛑 CHECKPOINT 0 — PROJECT FOUNDATION
 
 ### 🎯 Objective
