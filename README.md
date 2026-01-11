@@ -52,4 +52,21 @@ data/
     └── who_diabetes_guidelines.pdf
 ```
 
+## 🛑 CHECKPOINT 3 — PYTHON FOUNDATION (CORE FILES)
 
+### 🎯 Objective
+Establish the core Python entry points and configuration files required to start the application.
+
+### ✅ What Was Completed
+- Created essential Python source files
+- Defined a clear execution entry point
+- Added a centralized configuration module
+- Ensured the project is ready for controlled expansion
+
+### 📁 Core Source Structure
+```text
+src/
+├── __init__.py
+├── config.py
+└── main.py
+```
