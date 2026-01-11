@@ -88,3 +88,19 @@ All dependencies are pinned and managed using `requirements.txt` to ensure consi
 ```text
 requirements.txt
 ```
+## 🛑 CHECKPOINT 5 — DOCUMENT LOADING (FIRST RAG STEP)
+
+### 🎯 Objective
+Load and validate the WHO diabetes PDF as the first operational step in the RAG pipeline.
+
+### ✅ What Was Completed
+- Loaded the WHO diabetes PDF using LangChain document loaders
+- Converted the PDF into structured `Document` objects
+- Verified successful page extraction
+- Printed sample text content to confirm correct parsing
+- Confirmed that embedded images do not interfere with text extraction
+
+### 📄 Document Processing
+At this stage, the project focuses exclusively on **document ingestion and validation**, ensuring reliable text extraction before downstream processing.
+
+This checkpoint marks the transition from project setup to active RAG pipeline development while maintaining a controlled, incremental approach.
