@@ -70,3 +70,21 @@ src/
 ├── config.py
 └── main.py
 ```
+
+## 🛑 CHECKPOINT 4 — DEPENDENCY SETUP
+
+### 🎯 Objective
+Configure and install all required project dependencies in a controlled and reproducible environment.
+
+### ✅ What Was Completed
+- Created a `requirements.txt` file
+- Defined all core Python dependencies explicitly
+- Installed libraries inside an isolated virtual environment
+- Verified successful installation and compatibility
+
+### 📦 Dependency Management
+All dependencies are pinned and managed using `requirements.txt` to ensure consistent behavior across environments.
+
+```text
+requirements.txt
+```
