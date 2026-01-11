@@ -24,6 +24,7 @@ Design a clean, scalable, and professional folder structure for the project.
 - Ensured the project structure supports future scalability
 
 ### 📁 Folder Structure
+```text
 GlucoGuide/
 ├── data/
 │   └── raw/
@@ -31,6 +32,7 @@ GlucoGuide/
 ├── notebooks/
 ├── tests/
 └── README.md
+```
 
 ## 🛑 CHECKPOINT 2 — DATA INGESTION SETUP (FOUNDATION)
 
@@ -48,3 +50,6 @@ Prepare the project for reliable document ingestion without implementing process
 data/
 └── raw/
     └── who_diabetes_guidelines.pdf
+```
+
+
