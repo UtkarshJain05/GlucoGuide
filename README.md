@@ -104,3 +104,35 @@ Load and validate the WHO diabetes PDF as the first operational step in the RAG 
 At this stage, the project focuses exclusively on **document ingestion and validation**, ensuring reliable text extraction before downstream processing.
 
 This checkpoint marks the transition from project setup to active RAG pipeline development while maintaining a controlled, incremental approach.
+
+## 🛑 CHECKPOINT 6 — TEXT CHUNKING (CORE RAG CONCEPT)
+
+### 🎯 Objective
+Transform raw document text into structured, overlapping chunks suitable for downstream retrieval workflows.
+
+### ✅ What Was Completed
+- Implemented text chunking using a recursive splitting strategy
+- Defined optimal chunk size and overlap for semantic continuity
+- Converted extracted PDF text into clean, structured chunks
+- Inspected sample chunks to validate content integrity and boundaries
+
+### 🧩 Text Preparation
+Chunking ensures that long documents are broken into manageable units while preserving contextual meaning, enabling accurate and efficient retrieval in later stages.
+
+This checkpoint completes the document preprocessing foundation required for embedding and vector storage integration.
+
+## 🛑 CHECKPOINT 7 — EMBEDDINGS & VECTOR STORE (CORE RAG ENGINE)
+
+### 🎯 Objective
+Enable semantic understanding by converting text chunks into vector representations and storing them for efficient retrieval.
+
+### ✅ What Was Completed
+- Generated vector embeddings for all processed text chunks
+- Stored embeddings in a vector database for fast similarity search
+- Established the core retrieval engine of the RAG pipeline
+- Executed semantic similarity queries to validate retrieval accuracy
+
+### 🧠 Semantic Retrieval Layer
+This checkpoint introduces the intelligence layer of the system, allowing the project to retrieve contextually relevant information based on meaning rather than keywords.
+
+With embeddings and vector storage in place, the foundation is now ready for LLM-based response generation in subsequent stages.
