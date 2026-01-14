@@ -121,18 +121,18 @@ Chunking ensures that long documents are broken into manageable units while pres
 
 This checkpoint completes the document preprocessing foundation required for embedding and vector storage integration.
 
-## 🛑 CHECKPOINT 7 — EMBEDDINGS & VECTOR STORE (CORE RAG ENGINE)
+## 🛑 CHECKPOINT 7 — LOCAL EMBEDDINGS WITH MINI-LM
 
 ### 🎯 Objective
-Enable semantic understanding by converting text chunks into vector representations and storing them for efficient retrieval.
+Enable semantic understanding by generating and storing document embeddings locally.
 
 ### ✅ What Was Completed
-- Generated vector embeddings for all processed text chunks
-- Stored embeddings in a vector database for fast similarity search
-- Established the core retrieval engine of the RAG pipeline
-- Executed semantic similarity queries to validate retrieval accuracy
+- Implemented local embedding generation using a MiniLM model from Hugging Face
+- Generated vector representations fully offline
+- Stored embeddings in a Chroma vector database
+- Enabled semantic similarity search over document chunks
 
-### 🧠 Semantic Retrieval Layer
-This checkpoint introduces the intelligence layer of the system, allowing the project to retrieve contextually relevant information based on meaning rather than keywords.
+### 🧠 Embedding & Retrieval Layer
+This checkpoint introduces the core retrieval mechanism of the RAG pipeline, allowing the system to identify and retrieve contextually relevant document chunks based on user queries.
 
-With embeddings and vector storage in place, the foundation is now ready for LLM-based response generation in subsequent stages.
+With embeddings and vector storage in place, the project now supports true semantic search over the WHO diabetes documentation.
