@@ -154,60 +154,29 @@ All dependencies were installed using the following command to prevent any autom
 pip install -r requirements.txt --no-deps
 ```
 
-
----
-
-## 🆕 CHECKPOINT 8 (UPDATED) — RAG WITH OPENROUTER LLAMA-3.1
-
-> 🔁 **Change applied:** Local LLM → API-based LLM via OpenRouter  
-> ✅ Retrieval, chunking, embeddings, and citations remain identical
-
-```md
 ## 🛑 CHECKPOINT 8 — RAG WITH OPENROUTER LLAMA-3.1
 
 ### 🎯 Objective
-Enable end-to-end question answering by integrating Retrieval-Augmented Generation (RAG) with an API-based LLM.
+Enable end-to-end medical question answering by integrating Retrieval-Augmented Generation (RAG) with an API-based large language model.
 
 ### ✅ What Was Completed
-- Implemented a user-facing question input interface
+- Implemented a user-facing natural language question interface
 - Retrieved the most relevant document chunks using MiniLM embeddings and Chroma DB
-- Integrated OpenRouter as the LLM provider
-- Used LLaMA-3.1 via OpenRouter for answer generation
-- Generated clear, context-grounded responses
-- Included source citations with page-level references
-- Added a medical safety disclaimer to all generated outputs
+- Integrated OpenRouter as the LLM gateway
+- Used LLaMA-3.1 via OpenRouter for response generation
+- Generated clear, context-grounded medical answers
+- Included page-level source citations for transparency
+- Appended a medical safety disclaimer to all responses
 
-### 🔁 LLM Integration Update
-This checkpoint replaces the local language model with an API-based LLM accessed through **OpenRouter**, while keeping the retrieval and augmentation pipeline unchanged.
+### 🔁 LLM Architecture Update
+This checkpoint replaces the local language model with an API-based LLM accessed through OpenRouter.  
+All retrieval, chunking, embedding, and citation logic remains unchanged.
 
 ### 🧠 RAG Execution Flow
-1. User submits a natural language question  
-2. Relevant chunks are retrieved via MiniLM + Chroma DB  
+1. User submits a medical question  
+2. Relevant document chunks are retrieved via MiniLM + Chroma DB  
 3. Retrieved context is injected into an OpenRouter prompt  
-4. LLaMA-3.1 generates a grounded response  
+4. LLaMA-3.1 generates a grounded answer  
 5. Source citations and medical disclaimer are appended  
 
-This checkpoint completes the full Retrieval-Augmented Generation pipeline with a scalable, production-ready LLM backend.
-
-
-## 🛑 CHECKPOINT 8 — QUESTION ANSWERING (RAG = RETRIEVAL + GENERATION)
-
-### 🎯 Objective
-Integrate retrieval and generation to enable end-to-end question answering over the WHO diabetes documents.
-
-### ✅ What Was Completed
-- Implemented a user-facing question input interface
-- Retrieved the most relevant document chunks using MiniLM embeddings and Chroma DB
-- Augmented the retrieved context into an LLM prompt
-- Generated clear, grounded answers using a language model
-- Included source citations with page-level references
-- Added a medical safety disclaimer to all generated responses
-
-### 🧠 RAG Execution Flow
-1. User submits a natural language question  
-2. Relevant chunks are retrieved via semantic similarity search  
-3. Retrieved context is injected into the LLM prompt  
-4. The LLM generates a factual, context-grounded response  
-5. Source citations and safety disclaimer are appended  
-
-This checkpoint completes the core Retrieval-Augmented Generation pipeline, transforming GlucoGuide into a functional medical question-answering system.
+This checkpoint completes the full Retrieval-Augmented Generation pipeline, transforming **GlucoGuide** into a functional, scalable, and production-ready medical QA system.
