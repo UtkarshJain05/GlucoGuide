@@ -153,8 +153,7 @@ All dependencies were installed using the following command to prevent any autom
 ```bash
 pip install -r requirements.txt --no-deps
 ```
-
-## 🛑 CHECKPOINT 8 — RAG WITH OPENROUTER LLAMA-3.1
+## 🛑 CHECKPOINT 8 — RAG WITH OPENROUTER LLAMA-3.2
 
 ### 🎯 Objective
 Enable end-to-end medical question answering by integrating Retrieval-Augmented Generation (RAG) with an API-based large language model.
@@ -163,20 +162,20 @@ Enable end-to-end medical question answering by integrating Retrieval-Augmented 
 - Implemented a user-facing natural language question interface
 - Retrieved the most relevant document chunks using MiniLM embeddings and Chroma DB
 - Integrated OpenRouter as the LLM gateway
-- Used LLaMA-3.1 via OpenRouter for response generation
+- Used `meta-llama/llama-3.2-3b-instruct:free` for response generation
 - Generated clear, context-grounded medical answers
 - Included page-level source citations for transparency
 - Appended a medical safety disclaimer to all responses
 
 ### 🔁 LLM Architecture Update
-This checkpoint replaces the local language model with an API-based LLM accessed through OpenRouter.  
+This checkpoint uses an API-based LLM accessed via OpenRouter instead of a local model.  
 All retrieval, chunking, embedding, and citation logic remains unchanged.
 
 ### 🧠 RAG Execution Flow
 1. User submits a medical question  
 2. Relevant document chunks are retrieved via MiniLM + Chroma DB  
 3. Retrieved context is injected into an OpenRouter prompt  
-4. LLaMA-3.1 generates a grounded answer  
+4. `meta-llama/llama-3.2-3b-instruct:free` generates a grounded answer  
 5. Source citations and medical disclaimer are appended  
 
 This checkpoint completes the full Retrieval-Augmented Generation pipeline, transforming **GlucoGuide** into a functional, scalable, and production-ready medical QA system.
