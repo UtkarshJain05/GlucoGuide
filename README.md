@@ -121,18 +121,50 @@ Chunking ensures that long documents are broken into manageable units while pres
 
 This checkpoint completes the document preprocessing foundation required for embedding and vector storage integration.
 
-## 🛑 CHECKPOINT 7 — LOCAL EMBEDDINGS WITH MINI-LM
+## 🛑 CHECKPOINT 7 — LOCAL EMBEDDINGS WITH MINI-LM (WINDOWS-STABLE)
 
 ### 🎯 Objective
-Enable semantic understanding by generating and storing document embeddings locally.
+Enable semantic retrieval by generating document embeddings locally using a Windows-compatible configuration.
 
 ### ✅ What Was Completed
-- Implemented local embedding generation using a MiniLM model from Hugging Face
-- Generated vector representations fully offline
-- Stored embeddings in a Chroma vector database
+- Implemented local embedding generation using the MiniLM model from Hugging Face
+- Configured the embedding pipeline to run fully offline and CPU-only
+- Applied strict dependency version pinning to ensure Windows compatibility
+- Stored vector embeddings in a Chroma vector database
 - Enabled semantic similarity search over document chunks
+
+### ⚙️ Platform-Specific Configuration
+To ensure stable execution on Windows systems, the embedding stack was configured with carefully selected versions:
+
+- CPU-only PyTorch stack (no CUDA dependency)
+- Compatible `sentence-transformers`, `transformers`, and `tokenizers` versions
+- Avoided known Windows-breaking updates in newer releases
+
+This configuration prevents common runtime and installation issues observed with MiniLM on Windows environments.
 
 ### 🧠 Embedding & Retrieval Layer
 This checkpoint introduces the core retrieval mechanism of the RAG pipeline, allowing the system to identify and retrieve contextually relevant document chunks based on user queries.
 
-With embeddings and vector storage in place, the project now supports true semantic search over the WHO diabetes documentation.
+With embeddings and vector storage in place, the project now supports reliable semantic search over the WHO diabetes documentation.
+
+## 🛑 CHECKPOINT 8 — QUESTION ANSWERING (RAG = RETRIEVAL + GENERATION)
+
+### 🎯 Objective
+Integrate retrieval and generation to enable end-to-end question answering over the WHO diabetes documents.
+
+### ✅ What Was Completed
+- Implemented a user-facing question input interface
+- Retrieved the most relevant document chunks using MiniLM embeddings and Chroma DB
+- Augmented the retrieved context into an LLM prompt
+- Generated clear, grounded answers using a language model
+- Included source citations with page-level references
+- Added a medical safety disclaimer to all generated responses
+
+### 🧠 RAG Execution Flow
+1. User submits a natural language question  
+2. Relevant chunks are retrieved via semantic similarity search  
+3. Retrieved context is injected into the LLM prompt  
+4. The LLM generates a factual, context-grounded response  
+5. Source citations and safety disclaimer are appended  
+
+This checkpoint completes the core Retrieval-Augmented Generation pipeline, transforming GlucoGuide into a functional medical question-answering system.
