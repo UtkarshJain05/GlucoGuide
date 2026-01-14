@@ -147,6 +147,49 @@ This checkpoint introduces the core retrieval mechanism of the RAG pipeline, all
 
 With embeddings and vector storage in place, the project now supports reliable semantic search over the WHO diabetes documentation.
 
+### 🔒 Dependency Installation Safety
+All dependencies were installed using the following command to prevent any automatic or silent dependency upgrades by `pip`:
+
+```bash
+pip install -r requirements.txt --no-deps
+```
+
+
+---
+
+## 🆕 CHECKPOINT 8 (UPDATED) — RAG WITH OPENROUTER LLAMA-3.1
+
+> 🔁 **Change applied:** Local LLM → API-based LLM via OpenRouter  
+> ✅ Retrieval, chunking, embeddings, and citations remain identical
+
+```md
+## 🛑 CHECKPOINT 8 — RAG WITH OPENROUTER LLAMA-3.1
+
+### 🎯 Objective
+Enable end-to-end question answering by integrating Retrieval-Augmented Generation (RAG) with an API-based LLM.
+
+### ✅ What Was Completed
+- Implemented a user-facing question input interface
+- Retrieved the most relevant document chunks using MiniLM embeddings and Chroma DB
+- Integrated OpenRouter as the LLM provider
+- Used LLaMA-3.1 via OpenRouter for answer generation
+- Generated clear, context-grounded responses
+- Included source citations with page-level references
+- Added a medical safety disclaimer to all generated outputs
+
+### 🔁 LLM Integration Update
+This checkpoint replaces the local language model with an API-based LLM accessed through **OpenRouter**, while keeping the retrieval and augmentation pipeline unchanged.
+
+### 🧠 RAG Execution Flow
+1. User submits a natural language question  
+2. Relevant chunks are retrieved via MiniLM + Chroma DB  
+3. Retrieved context is injected into an OpenRouter prompt  
+4. LLaMA-3.1 generates a grounded response  
+5. Source citations and medical disclaimer are appended  
+
+This checkpoint completes the full Retrieval-Augmented Generation pipeline with a scalable, production-ready LLM backend.
+
+
 ## 🛑 CHECKPOINT 8 — QUESTION ANSWERING (RAG = RETRIEVAL + GENERATION)
 
 ### 🎯 Objective
