@@ -92,7 +92,7 @@ This ensures **ethical and safe medical AI usage**.
 ---
 
 ## 📁 Project Structure
-
+```text
 GlucoGuide/
 │
 ├── src/
@@ -107,4 +107,99 @@ GlucoGuide/
 ├── .gitignore
 ├── requirements.txt
 └── README.md
+```
 
+
+---
+
+## ⚙️ How It Works (Step-by-Step)
+
+1. Load the WHO diabetes PDF
+2. Split the document into overlapping text chunks
+3. Convert chunks into embeddings using MiniLM
+4. Store embeddings in a local Chroma vector database
+5. Convert user query into an embedding
+6. Retrieve top relevant chunks
+7. Pass retrieved context to LLaMA (OpenRouter)
+8. Generate a grounded answer or safely refuse
+
+---
+
+## 🧪 Example Behavior
+
+**Question:**
+
+> What is diabetes?
+
+**Answer:**
+
+> Diabetes is a condition in which the level of sugar (glucose) in the blood is higher than normal…
+
+**Sources:**
+
+> PDF pages: [0, 2, 3]
+
+---
+
+**Question:**
+
+> What is the cure for diabetes?
+
+**Answer:**
+
+> I don’t know based on the provided document.
+
+**Sources:**
+
+> PDF pages searched are shown for transparency.
+
+---
+
+## ⚠️ Important Design Choice
+
+This project intentionally uses a **strict RAG approach**:
+
+* The system **does not answer from general knowledge**
+* Answers are generated **only if supported by the document**
+* This prevents hallucinations and misinformation
+
+This behavior is especially important for **medical AI applications**.
+
+---
+
+## 🛠️ Current Status
+
+✅ Core RAG pipeline completed  
+✅ Local embeddings and vector database working  
+✅ OpenRouter LLaMA integration working  
+✅ Safe refusal behavior implemented  
+✅ Source citation enabled  
+
+---
+
+## 🔜 Upcoming Enhancements (Planned)
+
+* Backend API (FastAPI)
+* Localhost endpoint for interaction
+* Frontend UI (Lovable)
+* Improved UX for unanswered queries
+* Deployment-ready architecture
+
+*(These will be added incrementally and documented here.)*
+
+---
+
+## 📌 Disclaimer
+
+This project is for **educational and informational purposes only**.
+It is **not a medical diagnosis or treatment tool**.
+
+---
+
+## 🙌 Acknowledgements
+
+* World Health Organization (WHO)
+* Hugging Face
+* LangChain
+* OpenRouter
+* Meta (LLaMA models)
