@@ -1,0 +1,18 @@
+.env
+
+# Virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment variables (future)
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Processed data (can be regenerated)
+data/processed/

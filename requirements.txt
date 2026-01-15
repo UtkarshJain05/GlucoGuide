@@ -1,0 +1,25 @@
+# Core RAG framework
+langchain
+langchain-community
+langchain-text-splitters
+langchain-openai
+
+# PyTorch stack (CPU only, Windows-stable)
+torch==2.0.1
+torchvision==0.15.2
+numpy==1.26.4
+
+# Embeddings (MiniLM – local)
+sentence-transformers==2.2.2
+transformers==4.28.1
+tokenizers==0.13.3
+huggingface_hub==0.14.1
+
+# Vector database
+chromadb
+
+# PDF handling
+pypdf
+
+# Utilities
+python-dotenv
