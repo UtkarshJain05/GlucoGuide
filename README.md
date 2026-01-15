@@ -106,6 +106,7 @@ GlucoGuide/
 ├── .env                 # API keys (not committed)
 ├── .gitignore
 ├── requirements.txt
+├── Journey.md
 └── README.md
 ```
 
