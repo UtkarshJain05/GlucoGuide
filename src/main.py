@@ -1,7 +1,3 @@
-# import warnings
-# from langchain_core._warnings import LangChainDeprecationWarning
-
-# warnings.filterwarnings("ignore", category=LangChainDeprecationWarning)
 
 
 from langchain_community.document_loaders import PyPDFLoader
