@@ -98,11 +98,16 @@ def main():
 
     # 5. LLM
     llm = ChatOpenAI(
-        model="meta-llama/llama-3.2-3b-instruct:free",
-        openai_api_base="https://openrouter.ai/api/v1",
-        temperature=0.2
+        model="meta-llama/llama-3.2-3b-instruct",
+        api_key=os.getenv("OPENAI_API_KEY"),
+        base_url="https://openrouter.ai/api/v1",
+        default_headers={
+            "HTTP-Referer": "http://localhost",
+            "X-Title": "GlucoGuide"
+        },
+        temperature=0.2,
+        timeout=60,
     )
-
 
     # 6. Chat loop
 
