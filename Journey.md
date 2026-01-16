@@ -111,71 +111,105 @@ This checkpoint marks the transition from project setup to active RAG pipeline d
 Transform raw document text into structured, overlapping chunks suitable for downstream retrieval workflows.
 
 ### ✅ What Was Completed
-- Implemented text chunking using a recursive splitting strategy
-- Defined optimal chunk size and overlap for semantic continuity
-- Converted extracted PDF text into clean, structured chunks
-- Inspected sample chunks to validate content integrity and boundaries
+* Implemented recursive text splitting
+* Tuned chunk size and overlap for semantic continuity
+* Converted extracted PDF text into clean, inspectable chunks
+* Validated chunk boundaries and content quality
 
-### 🧩 Text Preparation
-Chunking ensures that long documents are broken into manageable units while preserving contextual meaning, enabling accurate and efficient retrieval in later stages.
+This checkpoint completes the preprocessing foundation required for embedding and retrieval.
 
-This checkpoint completes the document preprocessing foundation required for embedding and vector storage integration.
+---
 
 ## 🛑 CHECKPOINT 7 — LOCAL EMBEDDINGS WITH MINI-LM (WINDOWS-STABLE)
 
 ### 🎯 Objective
-Enable semantic retrieval by generating document embeddings locally using a Windows-compatible configuration.
+Enable semantic retrieval using local embeddings in a Windows-compatible environment.
 
 ### ✅ What Was Completed
-- Implemented local embedding generation using the MiniLM model from Hugging Face
-- Configured the embedding pipeline to run fully offline and CPU-only
-- Applied strict dependency version pinning to ensure Windows compatibility
-- Stored vector embeddings in a Chroma vector database
-- Enabled semantic similarity search over document chunks
+* Implemented MiniLM-based local embeddings (`all-MiniLM-L6-v2`)
+* Configured CPU-only inference (no CUDA dependency)
+* Stored embeddings in a persistent Chroma vector database
+* Enabled semantic similarity search over document chunks
 
-### ⚙️ Platform-Specific Configuration
-To ensure stable execution on Windows systems, the embedding stack was configured with carefully selected versions:
+### ⚙️ Platform Stability Measures
+To avoid common Windows-related issues:
+* CPU-only PyTorch stack was used
+* Hugging Face dependencies were carefully pinned
+* Known-breaking versions were intentionally avoided
 
-- CPU-only PyTorch stack (no CUDA dependency)
-- Compatible `sentence-transformers`, `transformers`, and `tokenizers` versions
-- Avoided known Windows-breaking updates in newer releases
+This checkpoint introduced the retrieval backbone of the RAG system.
 
-This configuration prevents common runtime and installation issues observed with MiniLM on Windows environments.
+---
 
-### 🧠 Embedding & Retrieval Layer
-This checkpoint introduces the core retrieval mechanism of the RAG pipeline, allowing the system to identify and retrieve contextually relevant document chunks based on user queries.
-
-With embeddings and vector storage in place, the project now supports reliable semantic search over the WHO diabetes documentation.
-
-### 🔒 Dependency Installation Safety
-All dependencies were installed using the following command to prevent any automatic or silent dependency upgrades by `pip`:
-
-```bash
-pip install -r requirements.txt --no-deps
-```
-## 🛑 CHECKPOINT 8 — RAG WITH OPENROUTER LLAMA-3.2
+## 🛑 CHECKPOINT 8 — RAG WITH OPENROUTER LLAMA-3.2 (API-BASED LLM)
 
 ### 🎯 Objective
-Enable end-to-end medical question answering by integrating Retrieval-Augmented Generation (RAG) with an API-based large language model.
+Enable end-to-end medical question answering using Retrieval-Augmented Generation with an API-based LLM.
 
 ### ✅ What Was Completed
-- Implemented a user-facing natural language question interface
-- Retrieved the most relevant document chunks using MiniLM embeddings and Chroma DB
-- Integrated OpenRouter as the LLM gateway
-- Used `meta-llama/llama-3.2-3b-instruct:free` for response generation
-- Generated clear, context-grounded medical answers
-- Included page-level source citations for transparency
-- Appended a medical safety disclaimer to all responses
+* Implemented a natural language question interface
+* Retrieved relevant chunks using MiniLM + Chroma
+* Integrated OpenRouter as the LLM gateway
+* Generated grounded answers with page-level citations
+* Implemented safe refusal when answers are not present in the document
+* Added medical safety disclaimers to responses
 
-### 🔁 LLM Architecture Update
-This checkpoint uses an API-based LLM accessed via OpenRouter instead of a local model.  
-All retrieval, chunking, embedding, and citation logic remains unchanged.
+### 🔁 Critical LLM Integration Fix
+During this checkpoint, an important stability issue was identified and resolved:
+* Initial use of `meta-llama/llama-3.2-3b-instruct:free` caused non-deterministic provider routing
+* The LLM configuration was corrected to:
+  * Use the base model identifier (`meta-llama/llama-3.2-3b-instruct`)
+  * Explicitly set the OpenRouter `base_url`
+  * Pass required OpenRouter headers
 
-### 🧠 RAG Execution Flow
-1. User submits a medical question  
-2. Relevant document chunks are retrieved via MiniLM + Chroma DB  
-3. Retrieved context is injected into an OpenRouter prompt  
-4. `meta-llama/llama-3.2-3b-instruct:free` generates a grounded answer  
-5. Source citations and medical disclaimer are appended  
+This change eliminated intermittent 402 errors and provider instability.
 
-This checkpoint completes the full Retrieval-Augmented Generation pipeline, transforming **GlucoGuide** into a functional, scalable, and production-ready medical QA system.
+### 🧠 Final RAG Execution Flow
+1. User submits a question  
+2. Relevant chunks retrieved via Chroma  
+3. Context injected into a structured prompt  
+4. LLaMA-3.2 Instruct generates a grounded response  
+5. Sources and safety disclaimers appended  
+
+This checkpoint completed the fully functional RAG pipeline.
+
+---
+
+## 🛑 CHECKPOINT 9 — DEPENDENCY FREEZE & REPRODUCIBILITY VERIFICATION
+
+### 🎯 Objective
+Guarantee that the project can be reliably reproduced on any machine without breaking.
+
+### ✅ What Was Completed
+* Inspected the actual working environment using `pip freeze`
+* Created a clean, minimal, pinned `requirements.txt`
+* Verified installation in a fresh test virtual environment
+* Confirmed that:
+  * The project runs correctly
+  * Existing embeddings are reused
+  * No hidden dependencies exist
+* Cleaned up the test environment after verification
+* Updated `.gitignore` to exclude local editor and environment files
+
+This checkpoint ensures long-term project stability, safe recovery from GitHub, and professional-grade dependency management.
+
+---
+
+## 🧠 Current Project State
+
+At this stage, **GlucoGuide** is:
+* Fully functional
+* Dependency-stable
+* Reproducible
+* Safe for medical QA use
+* Ready for backend and frontend expansion
+
+---
+
+## 🔜 Next Planned Phase
+* FastAPI backend
+* Localhost API endpoint
+* Frontend integration (Lovable)
+* Optional local LLM (Ollama) support
+
+All future changes will build on this stable core.
