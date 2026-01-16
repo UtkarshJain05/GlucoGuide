@@ -16,3 +16,5 @@ Thumbs.db
 
 # Processed data (can be regenerated)
 data/processed/
+
+.vscode/
