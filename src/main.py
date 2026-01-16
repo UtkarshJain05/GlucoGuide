@@ -7,11 +7,16 @@
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
 from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 import os
 from pathlib import Path
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(BASE_DIR)
+
+load_dotenv(os.path.join(PROJECT_ROOT, ".env"))
 
 from config import PDF_PATH
 
@@ -97,6 +102,7 @@ def main():
         openai_api_base="https://openrouter.ai/api/v1",
         temperature=0.2
     )
+
 
     # 6. Chat loop
 
