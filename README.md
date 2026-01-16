@@ -26,6 +26,7 @@ This strict behavior is intentional and aligns with best practices for **medical
 - 🚫 No hallucinations or unsupported medical claims
 - 📚 Source page references for transparency
 - 🔐 Secure API key handling using environment variables
+- 🧩 Stable OpenRouter integration with explicit configuration
 
 ---
 
@@ -51,23 +52,23 @@ Grounded Answer OR Safe Refusal
 ## 🧩 Tech Stack
 
 ### Embeddings
-
 * **Model:** `sentence-transformers/all-MiniLM-L6-v2`
 * **Execution:** Local (no API cost)
 
 ### Vector Store
-
 * **Database:** Chroma (local persistence)
 * **Search Type:** Semantic similarity search
 
 ### Language Model (LLM)
-
 * **Model:** `meta-llama/llama-3.2-3b-instruct:free`
 * **Provider:** OpenRouter
-* **Usage:** Answer generation only (no embeddings)
+* **Execution:** API-based (answer generation only)
+
+### ⚠️ Important Implementation Note
+* The LLM is configured using an explicit OpenRouter-compatible setup (custom base URL and headers).
+* This avoids provider routing instability and ensures reliable inference across sessions.
 
 ### Frameworks & Tools
-
 * Python
 * LangChain
 * ChromaDB
@@ -82,7 +83,6 @@ Grounded Answer OR Safe Refusal
 * API keys are stored securely in a `.env` file (never hardcoded)
 * `.env` is excluded via `.gitignore`
 * The system does **not** provide:
-
   * Medical diagnosis
   * Treatment advice
   * Information not present in the document
@@ -156,15 +156,18 @@ GlucoGuide/
 
 ---
 
-## ⚠️ Important Design Choice
+## ⚠️ Important Design Choices
 
-This project intentionally uses a **strict RAG approach**:
-
+### Strict RAG Enforcement
 * The system **does not answer from general knowledge**
 * Answers are generated **only if supported by the document**
 * This prevents hallucinations and misinformation
 
-This behavior is especially important for **medical AI applications**.
+### LangChain Warning Note
+* A known LangChain deprecation warning may appear related to embeddings
+* This warning does not affect functionality or correctness
+* Dependency versions are intentionally pinned for stability
+* Warning suppression is deferred to a future controlled upgrade
 
 ---
 
@@ -172,7 +175,7 @@ This behavior is especially important for **medical AI applications**.
 
 ✅ Core RAG pipeline completed  
 ✅ Local embeddings and vector database working  
-✅ OpenRouter LLaMA integration working  
+✅ Stable OpenRouter LLaMA integration (fixed configuration)  
 ✅ Safe refusal behavior implemented  
 ✅ Source citation enabled  
 
@@ -185,8 +188,9 @@ This behavior is especially important for **medical AI applications**.
 * Frontend UI (Lovable)
 * Improved UX for unanswered queries
 * Deployment-ready architecture
+* Optional local LLM execution mode (Ollama)
 
-*(These will be added incrementally and documented here.)*
+*(Enhancements will be added incrementally and documented here.)*
 
 ---
 
