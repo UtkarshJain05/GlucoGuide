@@ -17,5 +17,6 @@ Thumbs.db
 # Processed data (can be regenerated)
 data/processed/
 data/raw/*.pdf
+core/data/
 
 .vscode/
