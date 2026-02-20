@@ -12,18 +12,18 @@ This behavior is intentional to prevent hallucinations and unsupported medical c
 
 ---
 
-## 🔍 What This Project Demonstrates
+## 🚀 Highlights
 
-- End-to-end RAG pipeline implementation
-- Local semantic embeddings using MiniLM
-- Persistent vector database using Chroma
-- API-based LLM integration (OpenRouter + LLaMA)
-- Strict grounding to prevent hallucination
-- Clean project structure and reproducibility
+- Implemented complete Retrieval-Augmented Generation (RAG) pipeline
+- Strict grounding to eliminate hallucinations
+- Persistent local vector database using Chroma
+- Modular configuration via config.py
+- Secure API handling using environment variables
+- Fully reproducible dependency setup
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ System Architecture
 
 ```
 User Question
@@ -147,12 +147,7 @@ You must place your own PDF file inside:
 ```
 data/raw/
 ```
-
-Then update the filename in:
-
-```
-core/config.py
-```
+Then update the filename inside `src/config.py`.
 
 Example:
 
@@ -208,9 +203,9 @@ Type `exit` to quit.
 
 ## 📌 Disclaimer
 
-This project is for educational purposes only.
+This project demonstrates a controlled document-grounded RAG pipeline designed to minimize hallucinated responses.
 
-It is not a medical diagnosis or treatment tool.
+It is intended for educational and research purposes only and does not provide medical diagnosis or treatment advice.
 
 ---
 
