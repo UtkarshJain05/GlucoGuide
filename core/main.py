@@ -1,5 +1,4 @@
 
-
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
@@ -15,8 +14,6 @@ PROJECT_ROOT = os.path.dirname(BASE_DIR)
 load_dotenv(os.path.join(PROJECT_ROOT, ".env"))
 
 from config import PDF_PATH
-
-load_dotenv()
 
 SYSTEM_PROMPT = """x
 You are GlucoGuide, a medical document assistant.

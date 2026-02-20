@@ -95,7 +95,7 @@ This ensures **ethical and safe medical AI usage**.
 ```text
 GlucoGuide/
 │
-├── src/
+├── core/
 │   ├── main.py          # Core RAG pipeline
 │   ├── config.py        # Centralized configuration
 │
