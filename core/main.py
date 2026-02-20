@@ -13,7 +13,7 @@ PROJECT_ROOT = os.path.dirname(BASE_DIR)
 
 load_dotenv(os.path.join(PROJECT_ROOT, ".env"))
 
-from config import PDF_PATH
+from config import PDF_PATH, CHROMA_DIR
 
 SYSTEM_PROMPT = """x
 You are GlucoGuide, a medical document assistant.
@@ -75,18 +75,17 @@ def main():
     )
 
     # 4. Vector store
-    CHROMA_DIR = "data/processed/chroma_db"
 
-    if Path(CHROMA_DIR).exists():
+    if CHROMA_DIR.exists():
         vectorstore = Chroma(
-            persist_directory=CHROMA_DIR,
+            persist_directory=str(CHROMA_DIR),
             embedding_function=embeddings
         )
     else:
         vectorstore = Chroma.from_documents(
             documents=chunks,
             embedding=embeddings,
-            persist_directory=CHROMA_DIR
+            persist_directory=str(CHROMA_DIR)
         )
 
     # 5. LLM

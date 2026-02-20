@@ -10,3 +10,6 @@ PROCESSED_DATA_DIR = DATA_DIR / "processed"
 
 # PDF path
 PDF_PATH = RAW_DATA_DIR / "who_diabetes_guide.pdf"
+
+# Chroma DB path
+CHROMA_DIR = PROCESSED_DATA_DIR / "chroma_db"
