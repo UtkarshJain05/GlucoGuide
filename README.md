@@ -1,6 +1,6 @@
 # 🩺 GlucoGuide — Medical Document RAG System
 
-GlucoGuide is a Retrieval-Augmented Generation (RAG) system built to answer questions strictly from an official WHO diabetes PDF document.
+GlucoGuide is a Retrieval-Augmented Generation (RAG) system built to answer questions strictly from structured diabetes-related medical PDF documents (e.g., WHO diabetes guidelines).
 
 The system retrieves relevant sections from the document and generates answers only when the information is explicitly present in the source.
 
@@ -23,21 +23,27 @@ This behavior is intentional to prevent hallucinations and unsupported medical c
 
 ---
 
+## 🧠 Design Decisions
+
+- Chunk size: 500 with 100 token overlap for semantic continuity  
+- Top-k retrieval: 3  
+- Temperature: 0.2 to maintain factual consistency  
+- Persistent local vector store for reproducibility  
+- Explicit refusal mechanism to prevent hallucinated responses  
+
+---
+
 ## 🏗️ System Architecture
 
-```
-User Question
-      ↓
-MiniLM Embeddings (Local)
-      ↓
-Chroma Vector Database (Local)
-      ↓
-Relevant PDF Chunks Retrieved
-      ↓
-LLaMA-3.2 Instruct (via OpenRouter API)
-      ↓
-Grounded Answer OR Safe Refusal
-```
+![RAG Architecture](docs/architecture.png)
+
+---
+
+## 🖥️ Example Console Output
+
+Below is an example interaction with the system:
+
+![Example Output](docs/example-output.png)
 
 ---
 
@@ -77,9 +83,14 @@ GlucoGuide/
 │   ├── raw/          # Place WHO diabetes PDF here
 │   └── processed/    # Chroma DB (auto-generated, ignored by Git)
 │
+├── docs/
+│   ├── architecture.png
+│   └── example-output.png
+│
 ├── .gitignore
+├── LICENSE
 ├── requirements.txt
-├── Journey.md
+├── Development_Log.md
 └── README.md
 ```
 
@@ -87,7 +98,7 @@ GlucoGuide/
 
 ## ⚙️ How It Works
 
-1. Load WHO diabetes PDF
+1. Load a diabetes-related medical PDF document (user-provided)
 2. Split text into overlapping chunks
 3. Generate embeddings using MiniLM
 4. Store embeddings in Chroma (local persistence)
