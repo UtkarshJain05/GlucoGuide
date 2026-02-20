@@ -13,7 +13,7 @@ PROJECT_ROOT = os.path.dirname(BASE_DIR)
 
 load_dotenv(os.path.join(PROJECT_ROOT, ".env"))
 
-from config import PDF_PATH, CHROMA_DIR
+from src.config import PDF_PATH, CHROMA_DIR
 
 SYSTEM_PROMPT = """x
 You are GlucoGuide, a medical document assistant.

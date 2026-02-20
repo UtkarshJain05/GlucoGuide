@@ -68,7 +68,7 @@ Grounded Answer OR Safe Refusal
 ```
 GlucoGuide/
 │
-├── core/
+├── src/
 │   ├── __init__.py
 │   ├── config.py
 │   └── main.py
@@ -167,7 +167,7 @@ The system will process whatever PDF is placed in the `data/raw/` directory.
 ### 6️⃣ Run Application
 
 ```bash
-python core/main.py
+python src/main.py
 ```
 
 You can now ask questions about the document.
