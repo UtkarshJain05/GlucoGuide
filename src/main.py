@@ -1,11 +1,15 @@
+import os
+
+# Disable large model loading bars & reports
+os.environ["HF_HUB_DISABLE_PROGRESS_BARS"] = "1"
+os.environ["TRANSFORMERS_VERBOSITY"] = "error"
 
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
-import os
 from pathlib import Path
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))

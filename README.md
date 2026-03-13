@@ -51,10 +51,11 @@ Below is an example interaction with the system:
 
 ### Embeddings
 - sentence-transformers/all-MiniLM-L6-v2
-- CPU-only execution
+- Local CPU execution using HuggingFace
 
 ### Vector Database
-- Chroma (local persistent storage)
+- ChromaDB
+- Persistent local storage
 
 ### LLM
 - meta-llama/llama-3.2-3b-instruct
@@ -62,10 +63,15 @@ Below is an example interaction with the system:
 
 ### Core Libraries
 - LangChain
-- ChromaDB
-- Hugging Face Transformers
+- LangChain Community
+- LangChain Chroma
+- LangChain HuggingFace
+
+### Supporting Libraries
+- HuggingFace Transformers
 - PyPDF
 - Python-dotenv
+- NumPy / SciPy / Scikit-learn
 
 ---
 
@@ -81,7 +87,7 @@ GlucoGuide/
 │
 ├── data/
 │   ├── raw/          # Place WHO diabetes PDF here
-│   └── processed/    # Chroma DB (auto-generated, ignored by Git)
+│   └── processed/    # Chroma DB (auto-generated)
 │
 ├── docs/
 │   ├── architecture.png
@@ -90,7 +96,6 @@ GlucoGuide/
 ├── .gitignore
 ├── LICENSE
 ├── requirements.txt
-├── Development_Log.md
 └── README.md
 ```
 
@@ -100,12 +105,12 @@ GlucoGuide/
 
 1. Load a diabetes-related medical PDF document (user-provided)
 2. Split text into overlapping chunks
-3. Generate embeddings using MiniLM
-4. Store embeddings in Chroma (local persistence)
+3. Generate vector embeddings using MiniLM.
+4. Store embeddings inside a persistent Chroma vector database.
 5. Convert user query into embedding
-6. Retrieve top relevant chunks
-7. Pass retrieved context to LLaMA (OpenRouter)
-8. Generate grounded answer or safe refusal
+6. Retrieve the most relevant document chunks.
+7. Provide retrieved context to the LLM.
+8. Generate a grounded answer based strictly on retrieved context.
 
 ---
 
@@ -219,7 +224,3 @@ This project demonstrates a controlled document-grounded RAG pipeline designed t
 It is intended for educational and research purposes only and does not provide medical diagnosis or treatment advice.
 
 ---
-
-## 🧠 Development Log
-
-See `Development_Log.md` for structured checkpoint-based development progression.
