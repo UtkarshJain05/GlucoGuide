@@ -1,7 +1,7 @@
 import os
 
 # Disable large model loading bars & reports
-os.environ["HF_HUB_DISABLE_PROGRESS_BARS"] = "1"
+os.environ["HF_HUB_DISABLE_PROGRESS_BARS"] = "true"
 os.environ["TRANSFORMERS_VERBOSITY"] = "error"
 
 from langchain_community.document_loaders import PyPDFLoader
